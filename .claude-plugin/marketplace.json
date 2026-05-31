@@ -1,0 +1,26 @@
+{
+  "name": "j-token-workflow-kit",
+  "owner": {
+    "name": "j-token",
+    "email": "j-token@example.com"
+  },
+  "plugins": [
+    {
+      "name": "claude-workflow",
+      "source": "./plugins/claude-workflow",
+      "description": "모호한 요구사항, 디버깅 요청, Figma/UI 작업, PRD와 기술 스펙 작성을 확정된 문서로 수렴시키는 워크플로우 스킬 묶음입니다.",
+      "version": "0.4.2",
+      "license": "MIT",
+      "category": "Productivity",
+      "keywords": [
+        "workflow",
+        "spec",
+        "prd",
+        "technical-spec",
+        "debugging",
+        "figma",
+        "claude"
+      ]
+    }
+  ]
+}
