@@ -29,16 +29,10 @@ flowchart LR
 
 ## How To Use
 
-Start with a request that mentions the workflow you want to use. To avoid confusion with Claude Code's built-in `Workflow` tool, invoke this kit explicitly:
+To avoid confusion with Claude Code's built-in `Workflow` tool, invoke this kit explicitly with the slash command:
 
 ```text
 /j-token-workflow
-```
-
-Or mention it by name in a request:
-
-```text
-Use the j-token workflow to organize this requirement.
 ```
 
 Claude should first ask only the questions needed to reduce ambiguity. After the requirement is clear, ask it to write the document:
