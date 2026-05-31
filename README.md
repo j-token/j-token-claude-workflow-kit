@@ -4,7 +4,7 @@
 
 TL;DR: `j-token-workflow-kit` is a Claude Code workflow plugin that turns rough requests into reviewable specs, code changes, and verification steps. It is designed for work that starts vague and needs to become concrete before implementation.
 
-Current plugin version: `0.4.2`
+Current plugin version: `0.5.1`
 
 ## Why This Exists
 
@@ -29,10 +29,16 @@ flowchart LR
 
 ## How To Use
 
-Start with a request that mentions the workflow you want to use:
+Start with a request that mentions the workflow you want to use. To avoid confusion with Claude Code's built-in `Workflow` tool, invoke this kit explicitly:
 
 ```text
-Use the workflow to organize this requirement.
+/j-token-workflow
+```
+
+Or mention it by name in a request:
+
+```text
+Use the j-token workflow to organize this requirement.
 ```
 
 Claude should first ask only the questions needed to reduce ambiguity. After the requirement is clear, ask it to write the document:
@@ -55,6 +61,7 @@ After implementation, Claude should verify the result and report what was checke
 
 | Skill | Purpose |
 |---|---|
+| `j-token-workflow` | Explicit entry point (`/j-token-workflow`) for this kit's workflow, avoiding confusion with Claude Code's built-in `Workflow` tool. |
 | `requirements-to-spec` | Turns rough requirements into a concrete spec and implementation document. |
 | `prd-writer` | Drafts technical PRDs for products, SDKs, CLIs, runtimes, and developer tools. |
 | `technical-spec-writer` | Turns technical design notes into implementation specs with APIs, protocols, boundaries, and tests. |
