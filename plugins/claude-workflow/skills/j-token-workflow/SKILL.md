@@ -1,7 +1,7 @@
 ---
 name: j-token-workflow
 description: j-token-workflow-kit의 워크플로우를 명시적으로 시작하는 진입점입니다. Claude Code 기본 "워크플로우(Workflow 도구)"와 단어가 겹쳐 혼동될 때, 이 키트의 요구사항·디버깅·Figma/UI·PRD·스펙 워크플로우를 분명하게 지시하기 위해 사용합니다. 예시 지시) /j-token-workflow, j-token 워크플로우로 정리해줘, j-token 워크플로우 시작
-disable-model-invocation: true
+
 ---
 
 # j-token 워크플로우 진입점
