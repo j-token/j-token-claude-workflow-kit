@@ -4,7 +4,7 @@
 
 TL;DR: `j-token-workflow-kit` is a Claude Code workflow plugin that turns rough requests into reviewable specs, code changes, and verification steps. It is designed for work that starts vague and needs to become concrete before implementation.
 
-Current plugin version: `0.5.3`
+Current plugin version: `0.7.0`
 
 ## Why This Exists
 
@@ -59,6 +59,10 @@ After implementation, Claude should verify the result and report what was checke
 | `requirements-to-spec` | Turns rough requirements into a concrete spec and implementation document. |
 | `prd-writer` | Drafts technical PRDs for products, SDKs, CLIs, runtimes, and developer tools. |
 | `technical-spec-writer` | Turns technical design notes into implementation specs with APIs, protocols, boundaries, and tests. |
+| `audit-technical-spec` | Audits a technical spec against the repo and official sources with a fresh no-context agent before implementation. |
+| `start-implementation` | Gates on approval and a passed audit, then implements via plan mode with mandatory independent pre/post reviews. |
+| `orchestrate-subagents` | Delegates only gated, independent tasks to role-based subagents with file ownership and verification contracts. |
+| `prototype-design` | Builds and iterates a clickable web prototype before the design or flow is finalized. |
 | `bug-report-to-fix` | Captures bug details first, then moves into debugging and fixing after approval. |
 | `figma-flow-to-implementation` | Converts Figma links, screenshots, or UI references into a screen flow and implementation spec. |
 | `workflow-composer` | Combines multiple workflows when a request mixes requirements, bugs, and UI work. |
