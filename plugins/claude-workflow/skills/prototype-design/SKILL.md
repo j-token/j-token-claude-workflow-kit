@@ -1,6 +1,6 @@
 ---
 name: prototype-design
-description: 디자인이나 흐름이 확정되기 전에 가벼운 시각적 웹 프로토타입을 만들고 반복합니다. 사용자가 아이디어, 거친 제품 요청, 불명확한 화면 흐름을 제시하거나 브라우저에서 클릭 가능한 콘셉트를 보고 싶어 할 때 사용합니다. OS 시스템 임시 디렉터리의 `claude-workflow/prototype` 아래에 날짜별 작업 공간을 만들고 Mermaid 설계 문서, HTML/CSS/JS 소스, Python 정적 서버와 의미 있는 각 페이지 또는 상태의 스크린샷을 작성합니다. Figma를 사용하거나 확정된 디자인을 요구하지 않습니다.
+description: 디자인이나 흐름이 확정되기 전에 가벼운 시각적 웹 프로토타입을 만들고 반복합니다. 사용자가 아이디어, 거친 제품 요청, 불명확한 화면 흐름을 제시하거나 브라우저에서 클릭 가능한 콘셉트를 보고 싶어 할 때 사용합니다. 레포 내 `./.claude/temp/prototype` 아래에 날짜별 작업 공간을 만들고 Mermaid 설계 문서, HTML/CSS/JS 소스, Python 정적 서버와 의미 있는 각 페이지 또는 상태의 스크린샷을 작성합니다. Figma를 사용하거나 확정된 디자인을 요구하지 않습니다.
 ---
 
 # 프로토타입 설계
@@ -15,9 +15,9 @@ description: 디자인이나 흐름이 확정되기 전에 가벼운 시각적 �
 
 ## 임시 문서 경로 규칙
 
-사용자가 다른 위치를 명시하지 않으면 OS 시스템 임시 디렉터리 아래 `claude-workflow/prototype/` 디렉터리에 프로토타입 작업 공간을 만듭니다. 시스템 임시 디렉터리 예시는 macOS/Linux의 `/tmp` 또는 `$TMPDIR`, Windows의 `%TEMP%`입니다. 레포 내부의 상대 경로 `tmp/`를 만들지 않습니다.
+사용자가 다른 위치를 명시하지 않으면 레포 루트의 `./.claude/temp/prototype/` 디렉터리에 프로토타입 작업 공간을 만듭니다. `./.claude/temp` 디렉터리가 없으면 생성합니다. OS 시스템 임시 디렉터리(`/tmp`, `$TMPDIR`, `%TEMP%`)에는 작성하지 않습니다.
 
-Windows 임시 경로를 사용자에게 문자열로 안내할 때는 `%TEMP%\\claude-workflow\\prototype\\...`처럼 각 역슬래시를 두 번 써서 표현합니다. 코드 블록에서 하위 상대 경로를 보여줄 때는 `claude-workflow/prototype/...` 형식을 사용할 수 있습니다.
+코드 블록에서 하위 경로를 보여줄 때는 `./.claude/temp/prototype/...` 형식을 사용합니다.
 
 ## 목적
 
@@ -28,7 +28,7 @@ Windows 임시 경로를 사용자에게 문자열로 안내할 때는 `%TEMP%\\
 프로토타입을 시작하기 전에 다음 디렉터리를 만듭니다.
 
 ```text
-<system-temp>/claude-workflow/prototype/YYYYMMDD-<짧은-프로토타입-이름>/
+./.claude/temp/prototype/YYYYMMDD-<짧은-프로토타입-이름>/
 ├── prototype.md
 ├── screenshots/
 └── src/
@@ -51,13 +51,13 @@ Windows 임시 경로를 사용자에게 문자열로 안내할 때는 `%TEMP%\\
 5. 정적 서버를 시작합니다. 이 스킬의 `scripts/serve_prototype.py`를 Bash `run_in_background`로 기동하거나 표준 라이브러리 서버를 직접 사용합니다.
 
    ```bash
-   python "<이 스킬 경로>/scripts/serve_prototype.py" "<system-temp>/claude-workflow/prototype/YYYYMMDD-<name>/src" --port 4173
+   python "<이 스킬 경로>/scripts/serve_prototype.py" "./.claude/temp/prototype/YYYYMMDD-<name>/src" --port 4173
    ```
 
    또는:
 
    ```bash
-   python -m http.server 4173 --directory "<system-temp>/claude-workflow/prototype/YYYYMMDD-<name>/src"
+   python -m http.server 4173 --directory "./.claude/temp/prototype/YYYYMMDD-<name>/src"
    ```
 
    `python3`가 아닌 `python` 명령어를 사용합니다. `file://` 대신 `http://localhost:4173`에서 엽니다.
@@ -135,7 +135,7 @@ Mermaid 레이블에는 명확한 페이지 이름과 사용자 행동을 사용
 
 ## 완료 체크리스트
 
-- [ ] `<system-temp>/claude-workflow/prototype/YYYYMMDD-<name>/` 아래에 루트 문서가 있는가
+- [ ] `./.claude/temp/prototype/YYYYMMDD-<name>/` 아래에 루트 문서가 있는가
 - [ ] 루트 문서에 설계 목표, 시각적 방향과 Mermaid 페이지/흐름 다이어그램이 있는가
 - [ ] `src/index.html`, `src/styles.css`, `src/app.js`가 존재하며 브라우저에서 로드되는가
 - [ ] localhost의 Python HTTP 서버를 통해 프로토타입을 제공했는가
