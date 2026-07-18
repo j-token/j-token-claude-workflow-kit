@@ -25,11 +25,20 @@ description: j-token-workflow-kit의 워크플로우를 명시적으로 시작�
 | 배경, 원하는 결과, 거친 기능, 정책, 스펙 요청 | `requirements-to-spec` |
 | 제품/SDK/CLI/런타임/개발자 도구 기획, "왜·무엇" | `prd-writer` |
 | API, 프로토콜, 경계, 테스트 등 "어떻게"와 계약 | `technical-spec-writer` |
+| 아이디어·화면 흐름이 확정되기 전 클릭 가능한 콘셉트 | `prototype-design` |
 | 증상, 오류, 스크린샷, 로그, 재현, "안 된다" | `bug-report-to-fix` |
 | Figma 링크, 화면, 디자인, UI 흐름, 시각 자료 | `figma-flow-to-implementation` |
 | 위 작업이 한 요청에 섞여 있을 때 | `workflow-composer` |
 
 여러 모듈이 동시에 일치하면 `workflow-composer`의 활성화·질문 순서·임시 문서 규칙을 그대로 따릅니다.
+
+## 스펙 → 감사 → 구현 체인
+
+제품·기능 기술 스펙은 다음 순서로 이어집니다. 각 단계는 별도 스킬이 담당합니다.
+
+- `technical-spec-writer`로 기술 스펙을 작성한 직후 `audit-technical-spec`으로 무컨텍스트 독립 감사를 수행합니다.
+- 감사가 `통과` 또는 `조건부 통과`(블로커 없음)이고 사용자가 별도 메시지에서 구현을 승인하면 `start-implementation`으로 넘겨 plan 모드에서 구현합니다.
+- 하위 에이전트 위임이 필요한 단계는 `orchestrate-subagents`의 생성 게이트와 필수 독립 검증 계약을 따릅니다.
 
 ## 항상 함께 적용하는 보조 스킬
 

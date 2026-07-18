@@ -32,6 +32,7 @@ description: 요구사항 발견, 디버깅, UI/Figma 구현이 한 요청에 �
 | 단서 | 활성화 모듈 |
 |---|---|
 | 배경, 원하는 결과, 거친 기능, 정책, 스펙 요청 | `requirements-to-spec` |
+| 아이디어·화면 흐름이 확정되기 전 클릭 가능한 콘셉트 | `prototype-design` |
 | 증상, 오류, 스크린샷, 로그, 재현, "안 된다" | `bug-report-to-fix` |
 | Figma 링크, 화면, 디자인, UI 흐름, 스크린샷, 시각 자료 | `figma-flow-to-implementation` |
 
@@ -90,4 +91,12 @@ description: 요구사항 발견, 디버깅, UI/Figma 구현이 한 요청에 �
 - 작업 문서나 최종 문서가 확정되면 plan 모드로 들어가 확정된 문서를 기준으로 구현 계획을 제시합니다.
 - plan 모드에서는 코드를 수정하지 않고 계획만 제시합니다. 사용자가 계획을 승인하기 전까지 구현을 시작하지 않습니다.
 - 사용자가 plan을 승인하면 plan 모드를 빠져나와 구현을 시작합니다.
-- 이 규칙은 모든 모듈(`requirements-to-spec`, `bug-report-to-fix`, `figma-flow-to-implementation`)의 구현 직전 단계에 동일하게 적용됩니다.
+- 이 규칙은 모든 모듈(`requirements-to-spec`, `bug-report-to-fix`, `figma-flow-to-implementation`, `prototype-design`)의 구현 직전 단계에 동일하게 적용됩니다.
+
+## 스펙·감사·구현 연계
+
+제품·기능 기술 스펙 흐름에서는 다음 스킬을 연계합니다.
+
+- 기술 스펙을 작성한 직후 `audit-technical-spec`으로 무컨텍스트 독립 감사를 수행합니다.
+- 감사가 `통과` 또는 `조건부 통과`(블로커 없음)이고 사용자가 별도 메시지에서 구현을 승인하면 `start-implementation`으로 넘겨 plan 모드에서 구현하되, 구현 직전 문서 논리 검토와 구현 직후 코드 리뷰를 필수로 수행합니다.
+- 하위 에이전트 위임 여부는 `orchestrate-subagents`의 생성 게이트로 평가합니다.
